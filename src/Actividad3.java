@@ -9,7 +9,7 @@ class PrioridadRunnable implements Runnable {
 
 
 public class Actividad3 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread hilo1 = new Thread(new PrioridadRunnable());
         Thread hilo2 = new Thread(new PrioridadRunnable());
         Thread hilo3 = new Thread(new PrioridadRunnable());
@@ -23,7 +23,9 @@ public class Actividad3 {
         hilo3.setPriority(10);
 
         hilo1.start();
+        hilo1.join();
         hilo2.start();
+        hilo2.join();
         hilo3.start();
     }
 }

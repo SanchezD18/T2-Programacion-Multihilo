@@ -1,10 +1,12 @@
 public class HiloPrimos extends Thread {
-    private int inicio;
-    private int fin;
+    private final int hilo_id;
+    private final int totalNumeros;
+    private final int numHilos;
 
-    public HiloPrimos(int inicio, int fin) {
-        this.inicio = inicio;
-        this.fin = fin;
+    public HiloPrimos(int id, int totalNumeros, int numHilos) {
+        hilo_id = id;
+        this.totalNumeros = totalNumeros;
+        this.numHilos = numHilos;
     }
 
     private boolean esPrimo(int numero) {
@@ -20,6 +22,10 @@ public class HiloPrimos extends Thread {
 
     @Override
     public void run() {
+        int bloque = totalNumeros / numHilos;
+        int inicio = hilo_id * bloque + 1;
+        int fin = (hilo_id == numHilos - 1) ? totalNumeros : (hilo_id + 1) * bloque;
+
         for (int i = inicio; i <= fin; i++) {
             esPrimo(i);
         }
