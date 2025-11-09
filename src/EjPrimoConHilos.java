@@ -23,7 +23,6 @@ public class EjPrimoConHilos {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         long fin = System.currentTimeMillis();
 
         System.out.println("Tiempo de ejecución con hilos: " + (fin - inicio) + " ms");
